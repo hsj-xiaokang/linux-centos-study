@@ -359,7 +359,8 @@ c/c++等程序语言的档头(header)与包含档(include)放置处，当我们�
 
 五. 绝对路径与相对路径
 
-　　除了需要特别注意的FHS目录配置外，在文件名部分我们也要特别注意。因为根据档名写法的不同，也可将所谓的路径(path)定义为绝对路径(absolute)与相对路径(relative)。 这两种文件名/路径的写法依据是这样的：
+　　除了需要特别注意的FHS目录配置外，在文件名部分我们也要特别注意。因为根据档名写法的不同，也可将所谓的路径(path)定义为绝对路径(absolute)与相对路径(relative)。
+ 这两种文件名/路径的写法依据是这样的：
 
 绝对路径：
 
@@ -367,7 +368,8 @@ c/c++等程序语言的档头(header)与包含档(include)放置处，当我们�
 
 相对路径：
 
-　　相对于目前路径的文件名写法。 例如 ./home/dmtsai 或 http://www.cnblogs.com/home/dmtsai/ 等等。反正开头不是 / 就属于相对路径的写法
+　　相对于目前路径的文件名写法。 例如 ./home/dmtsai 或 http://www.cnblogs.com/home/dmtsai/ 等等。
+反正开头不是 / 就属于相对路径的写法
 
 而你必须要了解，相对路径是以你当前所在路径的相对位置来表示的。举例来说，你目前在 /home 这个目录下， 如果想要进入 /var/log 这个目录时，可以怎么写呢？
 
@@ -393,13 +395,15 @@ cd ../cron
 
 说明：
 
-　　由于/var/spool/mail与/var/spool/cron是同样在/var/spool/目录中。如此就不需要在由根目录开始写起了。这个相对路径是非常有帮助的，尤其对于某些软件开发商来说。 一般来说，软件开发商会将数据放置到/usr/local/里面的各相对目录。 但如果用户想要安装到不同目录呢？就得要使用相对路径。
+　　由于/var/spool/mail与/var/spool/cron是同样在/var/spool/目录中。如此就不需要在由根目录开始写起了。
+这个相对路径是非常有帮助的，尤其对于某些软件开发商来说。 一般来说，软件开发商会将数据放置到/usr/local/里面的各相对目录。 但如果用户想要安装到不同目录呢？就得要使用相对路径。
 
 实例2：网络文件常常提到类似./run.sh之类的数据，这个指令的意义为何？
 
 说明：
 
-　　由于指令的执行需要变量的支持，若你的执行文件放置在本目录，并且本目录并非正规的执行文件目录(/bin, /usr/bin等为正规)，此时要执行指令就得要严格指定该执行档。./代表本目录的意思，所以./run.sh代表执行本目录下， 名为run.sh的文件。
+　　由于指令的执行需要变量的支持，若你的执行文件放置在本目录，并且本目录并非正规的执行文件目录(/bin, /usr/bin等为正规)，此时要执行指令就得要严格指定该执行档。
+./代表本目录的意思，所以./run.sh代表执行本目录下， 名为run.sh的文件。
 ```
 
 
@@ -463,5 +467,472 @@ pwd   （查看当前路径命令）
 
 ```
 8.vim编辑器的使用
+whereis vim （查看vim在哪里？）
  https://www.cnblogs.com/crazylqy/p/5649860.html
+```
+
+```
+9.
+ shutdown -h now （关机-root）
+ shutdown -r now (立刻重启-root)
+```
+
+```
+10.
+ ctrl+alt+[F1-F6]进入命令行
+ ctrl+alt+[F7]进入xwindow
+```
+
+```
+11.
+ / 根目录
+ /bin 存放必要的命令
+ /boot 存放内核以及启动所需的文件
+ /dev 存放设备文件
+ /etc 存放系统配置文件
+ /home 普通用户的宿主目录，用户数据存放在其主目录中
+ /lib 存放必要的运行库
+ /mnt 存放临时的映射文件系统，通常用来挂载使用。
+  /proc 存放存储进程和系统信息
+ /root 超级用户的主目录
+ /sbin 存放系统管理程序
+ /tmp 存放临时文件
+ /usr 存放应用程序，命令程序文件、程序库、手册和其它文档。 = [unix software resources]
+ /var 系统默认日志存放目录  =[variable]
+```
+
+```
+12.
+    Linux必备命令
+
+   默认进入系统，我们会看到这样的字符: [root@localhost ~]#,其中#代表当前是root用户登录，如果是$表示当前为普通用户。
+
+   我们了解linux由很多目录文件构成，那我们来学习第一个Linux命令：
+   cd命令， cd  /home  ；解析：进入/home目录
+
+   cd /root 进入/root目录 ；
+
+   cd ../返回上一级目录;cd  ./当前目录；（.和..可以理解为相对路径；例如cd /hom/test ，cd加完整的路径，可以理解为绝对路径）
+
+   接下来继续学习更多的命令：
+   ls  ./ 查看当前目录所有的文件和目录。
+   ls  -a 查看所有的文件，包括隐藏文件,以.开头的文件。
+
+   pwd显示当前所在的目录。
+   mkdir创建目录，用法mkdir  test ，命令后接目录的名称。
+   rmdir 删除空目录
+   rm 删除文件或者目录，用法 rm –rf  test.txt (-r表示递归，-f表示强制)。
+   cp 拷贝文件，用法,cp  old.txt  /tmp/new.txt ，常用来备份；如果拷贝目录
+   需要加 –r参数。
+
+   mv 重命名或者移动文件或者目录，用法, mv old.txt new.txt
+   touch 创建文件，用法，touch test.txt，如果文件存在，则表示修改当前文件时间。
+   Useradd创建用户，用法 useradd wugk ，userdel删除用户。
+   Groupadd创建组，用法 groupadd wugk1 ，groupdel删除组。
+
+   touch:创建空白文档
+
+   mkdir:创建一个目录
+
+   vi:同touch一样，都是创建一个空白文档
+
+   举个栗子：touch w;此时创建一个w的空白文档；file w 可以查看文档w的属性，此时显示empty，表示确实是空白文档
+
+   mkdir w2；此时创建一个w2的文件夹；file w2可以查看文件夹w2的属性，此时现实directory，表示确实是建了一个文件夹
+
+   vi e3;此时创建一个w3的空白文档；file w3可以查看文档w3的属性，此时显示empty，表示确实是空白文档，由此可见vi和touch并无区别。
+
+   vim 是vi的升级版本！
+
+
+   find查找文件或目录，用法 find  /home  -name  “test.txt”,命令格式为:
+   find 后接查找的目录，-name指定需要查找的文件名称，名称可以使用*表示所有。
+
+   find  /home  -name  “*.txt” ;查找/home目录下，所有以.txt结尾的文件或者目录。
+
+   vi 修改某个文件，vi有三种模式：
+   命令行模式、文本输入模式、末行模式。
+   默认vi打开一个文件，首先是命令行模式，然后按i进入文本输入模式，可以在文件里写入字符等等信息。
+   写完后，按esc进入命令模式，然后输入:进入末行模式，
+   例如输入:wq表示保存退出。
+   如果想直接退出，不保存，可以执行:q!， q!叹号表示强制退出。
+
+   cat 查看文件内容，用法 cat test.txt 可以看到test.txt内容
+
+   more 查看文件内容，分页查看，cat是全部查看，如果篇幅很多，只能看到最后的篇幅。
+   可以使用cat和more同时使用,例如： cat  test.txt |more 分页显示text内容，|符号是管道符，用于把|前的输出作为后面命令的输入。
+
+   echo 回显，用法 echo ok，会显示ok，输入什么就打印什么。
+   echo  ok  > test.txt ；把ok字符覆盖test.txt内容，>表示追加并覆盖的意思。
+   >>两个大于符号，表示追加，echo ok >> test.txt,表示向test.txt文件追加OK字符，不覆盖原文件里的内容。
+   初学者常见的命令就如上所示，当然还有很多深入的命令需要学习，后面的课程会讲解。
+```
+```
+13.
+   Linux用户权限管理
+
+   在Linux操作系统中，root的权限是最高的，相当于windows的administrator，拥有最高权限，能执行任何命令和操作。
+   在系统中，通过UID来区分用户的权限级别，UID等于0，表示此用户具有最高权限，也就是管理员。
+   其他的用户UID依次增加，通过/etc/passwd用户密码文件可以查看到每个用户的独立的UID。
+
+   每一个文件或者目录的权限，都包含一个用户权限、一个组的权限、其他人权限，
+   例如下：
+   标红第一个root表示该文件所有者是root用户，
+   第二个root代表该文件的所属的组为root组，其他用户这里默认不标出。
+    [root@node1 ~]# ls -l monitor_log.sh
+   -rw-r--r-- 1 root root 91 May  7 20:21 monitor_log.sh
+
+   [root@node1 ~]#
+   如果我们想改变某个文件的所有者或者所属的组，可以使用命令chown
+   chown  –R  test:test  monitor_log.sh即可。
+
+   每个Linux文件具有四种访问权限：可读(r)、可写(w)、可执行(x)和无权限(-)。
+   利用ls -l命令可以看到某个文件或目录的权限，它以显示数据的第一个字段为
+    准。
+    第一个字段由10个字符组成，如下：
+   [root@node1 ~]# ls -l monitor_log.sh
+   -rw-r--r-- 1 root root 91 May  7 20:21 monitor_log.sh
+   [root@node1 ~]#
+      第一位表示文件类型，-表示文件，d表示目录；后面每三位为一组。
+      第一组：2-4位表示文件所有者的权限，即用户user权限，简称u
+      第二组：5-7位表示文件所有者所属组成员的权限，group权限，简称g
+      第三组：8-10位表示所有者所属组之外的用户的权限，other权限，简称o
+   从上面这个文件，我们可以看出，monito_log.sh文件对应的权限为：
+   root用户具有读和写的权限，root组具有读的权限，其他人具有读的权限。
+
+   为了能更简单快捷的使用和熟悉权限，rwx权限可以用数字来表示，分别表示为r（4）、w（2）、x（1）。
+   Monitor_log.sh权限可以表示为：644
+   如果给某个文件授权，命令为chmod：chmod 777 monitor_log.sh
+```
+
+```
+14.
+   Linux网络配置管理
+
+   熟悉了常用的命令和Linux权限，那接下来如何让所在的Linux系统上网呢？管理linux服务器网络有哪些命令呢？
+      Linux服务器默认网卡配置文件在/etc/sysconfig/network-scripts/下，
+      命名的名称一般为:
+      ifcfg-eth0
+      ifcfg-eth1 ，
+      eth0表示第一块网卡，eth1表示第二块网卡，依次类推。一般DELL R720标配有4块千兆网卡。
+
+      修改网卡的IP，可以使用命令: vi /etc/sysconfig/network-scripts/ifcfg-eth0
+   如果是DHCP获取的IP，默认配置如下：
+   # Advanced Micro Devices [AMD] 79c970 [PCnet32 LANCE]
+   DEVICE=eth0
+   BOOTPROTO=dhcp
+   HWADDR=00:0c:29:52:c7:4e
+   ONBOOT=yes
+   TYPE=Ethernet
+
+   如果是静态配置的IP，ifcfg-eth0网卡配置内容如下：
+   # Advanced Micro Devices [AMD] 79c970 [PCnet32 LANCE]
+   DEVICE=eth0
+   BOOTPROTO=static
+   HWADDR=00:0c:29:52:c7:4e
+   ONBOOT=yes
+   TYPE=Ethernet
+   IPADDR=192.168.33.10
+   NETMASK=255.255.255.0
+   GATEWAY=192.168.33.1
+
+   网卡参数详解如下：
+   DEVICE=eth0   #物理设备名
+   ONBOOT=yes   # [yes|no]（重启网卡是否激活设备）
+   BOOTPROTO=static #[none|static|bootp|dhcp]（不使用协议|静态分配|BOOTP协议|DHCP协议）
+
+   TYPE=Ethernet  #网卡类型
+   IPADDR=192.168.33.10 #IP 地址
+   NETMASK=255.255.255.0 #子网掩码
+   GATEWAY=192.168.33.1 #网关地址
+
+   网卡配置完毕，重启网卡，命令: /etc/init.d/network restart 即可。
+
+
+   查看ip命令：ifconfig 查看当前服务器所有网卡的IP，可以单独指定，ifconfig eth0 查看eth0的IP地址。
+   网卡配置完毕，如果来配置DNS，首先要知道DNS配置在哪个目录文件下，vi  /etc/resolv.conf 文件:
+   在该文件里面添加如下两条：
+   nameserver 202.106.0.20
+   nameserver 8.8.8.8
+   从上到下，分别表示主DNS，备DNS。配置完毕后，不需要重启网卡,DNS立即生效。
+   可以ping www.baidu.com 看看效果:
+
+   IP配置完毕后，我们可以通过远程工具来连接Linux服务器，常见的Linux远程连接工具有:putty、secureCRT（主流）、xshell、xmanger等工具。
+   下载安装secureCRT，打开工具，然后如图配置：
+   点击左上角quick connect快速连接，弹出界面，然后输入IP，用户名，端口默认是22，然后点击下方的connect连接，会提示输入密码，输入即可。
+
+   弹出输入密码框：
+
+   进入远程界面，与服务器真实登录一样，然后可以执行命令：
+```
+
+
+```
+   通过这几章的学习，我们已经熟练了Linux常用命令的操作，权限网络、网络配置、远程连接等知识，那接下来我们还能做什么呢？
+   我们已经差不多入门了，接下来就是更进一步的服务配置，Linux系统到底用来做什么呢？接下来的章节将跟大家一起来学习。
+
+   Linux系统的应用，我们最开始介绍的时候简单介绍过，目前大中型企业都用它来承载web网站、数据库、虚拟化平台等，
+   那接下来我们将在Linux系统安装各种服务和软件来实现Linux真正的价值。
+
+   2.1. 5         Linux软件包管理必备命令
+
+   2.   Linux服务篇
+   3.1            Linux服务部署
+
+   3.1. 1         构建NTP时间服务器
+
+   NTP服务器是用于局域网服务器时间同步使用的，可以保证局域网所有的服务器与时间服务器的时间保持一致，某些应用对时间实时性要求高的必须统一时间。
+   互联网的时间服务器也有很多，例如ntpdate ntp.fudan.edu.cn 复旦大学的NTP免费提供互联网时间同步。
+   NTP服务器监听端口为UDP的123，那就需要在本地防火墙开启运行客户端访问123端口，vi /etc/sysconfig/iptables添加如下规则：
+   -A INPUT -m state --state NEW -m udp -p udp --dport 123 -j ACCEPT
+   NTP时间服务器配置：
+   yum install ntp ntpdate -y 即可！
+   修改ntp.conf配置文件
+   cp  /etp/ntp.conf /etc/ntp.conf.bak
+   vi /etc/ntp.conf 只修改如下两行，把#号去掉即可！
+   server 127.127.1.0     # local clock
+   fudge  127.127.1.0 stratum 10
+   以守护进程启动ntpd
+   /etc/init.d/ntpd start 即可
+   （注意*： ntpd启动后，客户机要等几分钟再与其进行时间同步，否则会提示“no server suitable for synchronization found”错误。）
+   配置时间同步客户机
+   crontab -e
+   增加一行，在每天的6点10分与时间同步服务器进行同步
+   10 06 * * * /usr/sbin/ntpdate ntp-server的ip >>/usr/local/logs/crontab/ntpdate.log
+   备注：如果客户机没有ntpdate，可以yum –y install ntp 即可！
+   以下是ntp服务器配置文件内容(局域网NTP，如果需要跟外网同步，添加外网server即可)
+   driftfile /var/lib/ntp/drift
+   restrict default kod nomodify notrap nopeer noquery
+   restrict -6 default kod nomodify notrap nopeer noquery
+   restrict 127.0.0.1
+   restrict -6 ::1
+   server  127.127.1.0     # local clock
+   fudge   127.127.1.0 stratum 10
+   includefile /etc/ntp/crypto/pw
+   keys /etc/ntp/keys
+   下面是参数详解：
+
+   restrict default ignore	# 关闭所有的 NTP 要求封包
+   restrict 127.0.0.1	# 开启内部递归网络接口 lo
+   restrict 192.168.0.0 mask 255.255.255.0 nomodify	#在内部子网里面的客户端可以进行网络校时，但不能修改NTP服务器的时间参数。
+   server 198.123.30.132	#198.123.30.132作为上级时间服务器参考
+   restrict 198.123.30.132	#开放server 访问我们ntp服务的权限
+   driftfile /var/lib/ntp/drift	在与上级时间服务器联系时所花费的时间，记录在driftfile参数后面的文件内
+   broadcastdelay 0.008	#广播延迟时间
+
+   自此NTP服务搭建完毕，然后在所有客户端crontab里面添加如下语句：
+   0  0   *  *  * /usr/sbin/ntpdate  10.0.0.155 >>/data/logs/ntp.log 2>&1
+
+   3.1. 2         构建DHCP服务器
+
+   DHCP(Dynamic Host Configuration Protocol，动态主机配置协议)是一个局域网的网络协议，使用UDP协议工作，主要用途：给内部网络或网络服务供应商自动分配IP地址，DHCP有3个端口，其中UDP67和UDP68为正常的DHCP服务端口，分别作为DHCP Server和DHCP Client的服务端口。
+   DHCP可以部署在服务器、交换机或者服务器，可以控制一段IP地址范围，客户机登录服务器时就可以自动获得DHCP服务器分配的IP地址和子网掩码。其中DHCP所在服务器的需要安装TCP/IP协议，需要设置静态IP地址、子网掩码、默认网关。
+   正式安装DHCP服务：
+   Yum  install  dhcp dhcp-devel –y 即可，然后修改DHCP /etc/dhcpd.conf配置文件内容如下：
+   ddns-update-style interim;
+   ignore client-updates;
+   next-server  192.168.0.79;
+   filename "pxelinux.0";
+   allow booting;
+   allow bootp;
+   subnet 192.168.0.0 netmask 255.255.255.0 {
+   # --- default gateway
+   option routers          192.168.0.1;
+   option subnet-mask      255.255.252.0;
+   #   option nis-domain       "domain.org";
+   #  option domain-name "192.168.0.10";
+   #   option domain-name-servers  192.168.0.11;
+   #   option ntp-servers      192.168.1.1;
+   #   option netbios-name-servers  192.168.1.1;
+   # --- Selects point-to-point node (default is hybrid). Don't change this unless
+   # -- you understand Netbios very well
+   #   option netbios-node-type 2;
+   range  dynamic-bootp  192.168.0.100 192.168.0.200;
+   host ns {
+   hardware ethernet  00:1a:a0:2b:38:81;
+   fixed-address 192.168.0.101;}
+   }
+   参数解析如下：
+
+   选    项	解    释
+
+   ddns-update-style interim|ad-hoc|none	 参数用来设置DHCP服务器与DNS服务器的动态信息更新模式：interim为DNS互动更新模式，ad-hoc为特殊DNS更新模式，none为不支持动态更新模式。
+   next-server ip	pxeclient远程安装系统，指定tftp server 地址
+   filename	开始启动文件的名称，应用于无盘安装，可以是tftp的相对或绝对路径
+   ignore client-updates	为忽略客户端更新
+   subnet-mask	为客户端设定子网掩码
+   option routers	为客户端指定网关地址
+   domain-name	为客户端指明DNS名字
+   domain-name-servers	为客户端指明DNS服务器的IP地址
+   host-name	为客户端指定主机名称
+   broadcast-address	为客户端设定广播地址
+   ntp-server	为客户端设定网络时间服务器的IP地址
+   time-offset	为客户端设定格林威治时间的偏移时间，单位是秒
+   注意如上配置，需要修改成对应服务器网段IP，然后重启DHCP服务，/etc/init.d/dhcpd restart即可。
+   客户端要从这个DHCP服务器获取IP，需要做简单的设置，如果是linux需要把/etc/sysconfig/network-scritps/ifcfg-eth0里BOOTPROTO相改成dhcp即可，windows机器的话，需要修改本地连接，把它设置成自动获取IP即可。
+   BOOTPROTO=dhcp
+
+   3.1. 3         搭建Samba服务器
+
+   Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成，
+   SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。
+   SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。通过设置“NetBIOS over TCP/IP”使得Samba不但能与局域网络主机分享资源，还能与全世界的电脑分享资源。
+   安装SAMBA服务器：
+   Yum install  samba –y
+   安装完毕，然后做如下设置（过滤#号行、空行如下命令）
+   cp /etc/samba/smb.conf /etc/samba/smb.conf.bak ;egrep -v "#|^$" /etc/samba/smb.conf.bak |grep -v "^;" >/etc/samba/smb.conf
+   查看smb.conf配置文件如下：
+   [global]
+           workgroup = MYGROUP
+           server string = Samba Server Version %v
+           security = share
+           passdb backend = tdbsam
+           load printers = yes
+           cups options = raw
+
+   [temp]
+        comment=Temporary file space
+        path=/tmp
+        read only=no
+        public=yes
+
+   [data]
+        comment=Temporary file space
+        path=/data
+        read only=no
+        public=yes
+   根据需求修改之后重启服务：
+   [root@node1 ~]# /etc/init.d/smb restart
+   Shutting down SMB services:                                [FAILED]
+   Shutting down NMB services:                                [FAILED]
+   Starting SMB services:                                     [  OK  ]
+   Starting NMB services:                                     [  OK  ]
+
+
+   workgroup =	WORKGROUP 设Samba Server 所要加入的工作组或者域。
+   server string = Samba Server Version %v	Samba Server 的注释，可以是任何字符串，也可以不填。宏%v表示显示Samba的版本号。
+
+
+
+
+   security = user	1.share：用户访问Samba Server不需要提供用户名和口令, 安全性能较低。
+   2. user：Samba Server共享目录只能被授权的用户访问,由Samba Server负责检查账号和密码的正确性。账号和密码要在本Samba Server中建立。
+   3. server：依靠其他Windows NT/2000或Samba Server来验证用户的账号和密码,是一种代理验证。此种安全模式下,系统管理员可以把所有的Windows用户和口令集中到一个NT系统上,使用Windows NT进行Samba认证, 远程服务器可以自动认证全部用户和口令,如果认证失败,Samba将使用用户级安全模式作为替代的方式。
+   4. domain：域安全级别,使用主域控制器(PDC)来完成认证。
+   comment = test	是对该共享的描述，可以是任意字符串。
+   path = /home/test	共享目录路径
+   browseable= yes/no 	用来指定该共享是否可以浏览。
+   writable = yes/no	writable用来指定该共享路径是否可写。
+   available = yes/no	available用来指定该共享资源是否可用
+   admin users = admin	该共享的管理者
+   valid users = test	允许访问该共享的用户
+   invalid users = test	禁止访问该共享的用户
+   write list = test	允许写入该共享的用户
+   public = yes/no	public用来指定该共享是否允许guest账户访问。
+
+   在浏览器里面访问方式为：\\192.168.33.10 （SMB文件共享服务端IP），如何没有权限访问，需要注意防火墙和selinux设置，可以使用如下命令关闭：
+   /etc/init.d/iptables stop ;sed  –i   ‘/SELINUX/s/enforcing/disabled’  /etc/sysconfig/selinux
+
+
+   3.1. 4         搭建NFS服务器
+
+   NFS 是Network File System的缩写，即网络文件系统。一种使用于分散式文件系统的协定，由Sun公司开发，于1984年向外公布。功能是通过网络让不同的机器、不同的操作系统能够彼此分享个别的数据，让应用程序在客户端通过网络访问位于服务器磁盘中的数据，是在类Unix系统间实现磁盘文件共享的一种方法。
+   NFS在文件传送或信息传送过程中依赖于RPC协议。RPC，远程过程调用 (Remote Procedure Call) 是能使客户端执行其他系统中程序的一种机制。NFS本身是没有提供信息传输的协议和功能的。
+   NFS应用场景，常用于高可用文件共享，多台服务器共享同样的数据，可扩展性比较差，本身高可用方案不完善，取而代之的数据量比较大的可以采用MFS、TFS、HDFS等等分布式文件系统。
+   NFS安装配置：
+   Yum  install nfs*  portmap  -y 如下图，安装成功即可。
+
+   NFS安装完毕，需要创建共享目录，共享目录在/etc/exports文件里面配置，可配置参数如下：
+   /data/      192.168.33.11(rw,sync,no_hide,no_all_squash)
+   在配置文件中添加如上一行，然后重启Portmap，NFS服务即可，/etc/init.d/portmap restart ;/etc/init.d/nfs restart
+   第一列/data/表示需要共享的目录。
+   IP表示允许哪个客户端访问。
+   IP后括号里的设置表示对该共享文件的权限。
+   ro                      只读访问
+   rw                      读写访问
+   sync                    所有数据在请求时写入共享
+   hide                    在NFS共享目录中不共享其子目录
+   no_hide                 共享NFS目录的子目录
+   all_squash              共享文件的UID和GID映射匿名用户anonymous，适合公用目录。
+   no_all_squash           保留共享文件的UID和GID（默认）
+   root_squash             root用户的所有请求映射成如anonymous用户一样的权限（默认）
+   no_root_squas           root用户具有根目录的完全管理访问权限
+
+
+   Linux客户端，如何想使用这个NFS文件系统，需要在客户端挂载，挂载命令为：
+   Mount –t  nfs  192.168.33.10:/data/    /mnt 即可。如果有报错根据错误信息排查。常见问题有rpc服务没有启动、防火墙没关闭、selinux未关闭等问题。（拓展* 有兴趣的童鞋可以研究MFS（分布式文件系统）。）
+
+   3.1. 5         搭建FTP服务器
+
+   FTP 是文件传输协议，正是由于这种协议使得主机间可以共享文件。 FTP 使用TCP 生成一个虚拟连接用于控制信息，然后再生成一个单独的 TCP 连接用于数据传输。
+   vsftpd是一款在Linux发行版中最主流的FTP服务器程序；特点是小巧轻快，安全易用；能让其自身特点得发发挥和掌握。
+   目前在开源操作系统中常用的FTP服务器程序主要有vsftpd、ProFTPD、PureFTPd和wuftpd等，这么多FTP服务器程序，关键在于自己熟练哪一个就使用哪一个。今天我们来研究一下VSFTPD简单安装及使用。安装命令: yum  install vsftpd*  -y
+
+   修改配置文件如下：
+   #vsftpd config 2014 by wugk
+   anonymous_enable=NO    //禁止匿名用户访问
+   local_enable=YES  //允许本地用户登录FTP
+   write_enable=YES   //运行用户在FTP目录有写入的权限
+   local_umask=022   //设置本地用户的文件生成掩码为022，默认是077
+   dirmessage_enable=YES //激活目录信息,当远程用户更改目录时,将出现提示信息
+   xferlog_enable=YES   //启用上传和下载日志功能
+   connect_from_port_20=YES  //启用FTP数据端口的连接请求
+   xferlog_std_format=YES  //是否使用标准的ftpd xferlog日志文件格式
+   listen=YES  //使vsftpd处于独立启动监听端口模式
+   pam_service_name=vsftpd //设置PAM认证服务配置文件名称，文件存放在/etc/pam.d/目录
+   userlist_enable=YES   //用户列表中的用户是否允许登录FTP服务器,默认是不允许
+   tcp_wrappers=YES    //使用tcp_wrqppers作为主机访问控制方式
+
+   1)    第一种方法就是使用系统用户登录FTP，但是也是比较危险的，先测试系统用户登录FTP，在Linux系统上创建useradd  test 用户，并为其设置名，然后在xp客户端打开我的电脑资源里面访问 ftp://192.168.33.10，输入用户名和密码即可访问，进行创建和删除操作。
+   2)    第二种方法比较安全，配置相对复杂一点，就是使用vsftpd虚拟用户登录FTP服务器进行常见的操作。
+   Ø       首先安装FTP 虚拟用户需要用到的软件及认证模块
+   yum install pam* db4* --skip-broken –y
+   创建并生成vsftpd数据库文件vi /etc/vsftpd/ftpusers.txt，内容如下：
+   第一行为FTP虚拟用户，登录用户名，第二行为密码，第三行为用户名，依次类推。
+   wugk
+   1
+   wugk1
+   1
+   Ø       生成数据库文件命令：
+   db_load -T -t hash -f /etc/vsftpd/ftpusers.txt /etc/vsftpd/vsftpd_login.db
+   chmod 700 /etc/vsftpd/vsftpd_login.db
+   Ø       配置PAM验证文件：
+   在配置文件vi /etc/pam.d/vsftpd 行首加入如下两行认证语句：（如果是32位，lib64需改成lib，如果RedHat，加入的语句不一样，需注意）
+   auth    sufficient      /lib64/security/pam_userdb.so     db=/etc/vsftpd/vsftpd_login
+   account sufficient      /lib64/security/pam_userdb.so      db=/etc/vsftpd/vsftpd_login
+   Ø       创建vsftpd映射本地用户:
+   所有的FTP虚拟用户需要使用一个系统用户，这个系统用户不需要密码，也不需要登录。主要用来做虚拟用户映射使用。
+   useradd  –d /home/ftpuser –s /sbin/nologin ftpuser
+   Ø       修改完整版配置文件内容如下：
+   anonymous_enable=NO
+   local_enable=YES
+   write_enable=YES
+   local_umask=022
+   dirmessage_enable=YES
+   xferlog_enable=YES
+   connect_from_port_20=YES
+   xferlog_file=/var/log/vsftpd.log
+   xferlog_std_format=YES
+   ascii_upload_enable=YES
+   ascii_download_enable=YES
+   listen=YES
+
+   guest_enable=YES
+   guest_username=ftpuser
+   pam_service_name=vsftpd
+   user_config_dir=/etc/vsftpd/vsftpd_user_conf
+   virtual_use_local_privs=YES
+
+      保存重启,/etc/init.d/vsftpd restart 即可使用虚拟用户登录，这时候所有的虚拟用户共同使用/home/ftpuser目录上传下载，如果想使用自己独立的目录，可以在/etc/vsftpd/vsftpd_user_conf目录创建各自的配置文件，如给wugk创建独立的配置文件：
+   vi /etc/vsftpd/vsftpd_user_conf/wugk ，内容如下，建立自己的FTP目录。
+   local_root=/home/ftpsite/wugk
+   write_enable=YES
+   anon_world_readable_only=YES
+   anon_upload_enable=YES
+   anon_mkdir_write_enable=YES
+   anon_other_write_enable=YES
+    重启，使用客户端登录FTP，测试即可。关于FTP讲解就到此，windows还可以使用Server-U来搭建FTP服务器端，有兴趣的童鞋可以研究一下。
+   Ø       FTP主被动模式
+   FTP主动模式：客户端从一个任意的非特权端口N（N>1024）连接到FTP服务器的port 21命令端口。然后客户端开始监听端口N+1，并发送FTP命令“port N+1”到FTP服务器。接着服务器会从它自己的数据端口（20）连接到客户端指定的数据端口（N+1）。
+   FTP被动模式：客户端从一个任意的非特权端口N（N>1024）连接到FTP服务器的port 21命令端口。然后客户端开始监听端口N+1，同时客户端提交 PASV命令。服务器会开启一个任意的非特权端口（P >1024），并发送PORT P命令给客户端。然后客户端发起从本地端口N+1到服务器的端口P的连接用来传送数据。
 ```
